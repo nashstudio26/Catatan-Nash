@@ -14,7 +14,7 @@
 
   <script>
     tailwind.config = {
-      darkMode: 'class', // Mengaktifkan modul class-based dark mode Tailwind secara absolut
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -23,12 +23,9 @@
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            // Palet Kertas Novel Fisik Hangat (Mode Terang)
             cream: '#fbf9f4',
             'cream-sidebar': '#f5f2e9',
             ink: '#1c1b18',
-            
-            // Palet Mode Gelap Redup Nyaman (Mode Gelap)
             charcoal: '#131312',
             'charcoal-sidebar': '#1c1c1b',
             bone: '#e8e6df',
@@ -39,7 +36,6 @@
   </script>
 
   <style>
-    /* Transisi Global Lembut */
     body {
       background-color: #fbf9f4;
       color: #1c1b18;
@@ -50,7 +46,6 @@
       color: #e8e6df;
     }
 
-    /* Scrollbar Tipis Sastra */
     .custom-scroll::-webkit-scrollbar {
       width: 4px;
     }
@@ -64,7 +59,6 @@
       background: #2d2d2c;
     }
 
-    /* Drop Cap (Huruf Pertama Novel) */
     .drop-cap::first-letter {
       float: left;
       font-family: 'Playfair Display', Georgia, serif;
@@ -76,28 +70,6 @@
       color: currentColor;
     }
 
-    /* Underline Hover Tipis Sastra */
-    .ink-link {
-      position: relative;
-    }
-    .ink-link::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 1px;
-      bottom: -1px;
-      left: 0;
-      background-color: currentColor;
-      transform-origin: bottom right;
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .ink-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: bottom left;
-    }
-
-    /* Animasi Teks */
     .article-fade {
       animation: articleFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -109,32 +81,29 @@
 </head>
 <body class="font-sans antialiased h-[100dvh] max-h-[100dvh] overflow-hidden">
 
-  <!-- LAYOUT GRID UTAMA (Terkunci ke Viewport Tinggi Dinamis, Bebas Bug Scroll Fatal) -->
   <div class="grid grid-cols-1 md:grid-cols-12 h-[100dvh] max-h-[100dvh] w-full overflow-hidden">
     
-    <!-- SISI KIRI: PANEL NAVIGASI & TAB INTERAKTIF (Compact) -->
+    <!-- SISI KIRI: PANEL NAVIGASI & TAB INTERAKTIF -->
     <aside id="panel-left" class="flex md:col-span-5 lg:col-span-4 bg-cream-sidebar dark:bg-charcoal-sidebar border-r border-[#e3dfd3] dark:border-neutral-800 flex-col h-full max-h-full overflow-hidden transition-colors duration-400">
       
-      <!-- Identitas Editorial (Pinned Header dengan Tombol Selalu Muncul di HP) -->
+      <!-- Identitas Editorial Header -->
       <div class="p-6 md:p-8 pb-4 border-b border-[#e3dfd3] dark:border-neutral-800 flex-none flex justify-between items-start gap-4">
         <div>
           <h1 id="site-title" class="font-serif text-2xl sm:text-3xl md:text-4xl tracking-tight font-bold mb-2 cursor-pointer transition-all" onclick="resetRouter()">
-            Jurnal & Catatan
+            Catatan Naash
           </h1>
           <p id="site-subtitle" class="text-xs text-neutral-500 dark:text-neutral-400 font-serif italic leading-relaxed">
-            Memuat catatan harian, artikel kritis, dan amatan realitas secara jujur.
+            Kumpulan catatan sejak 1 tahun terakhir
           </p>
         </div>
 
-        <!-- Tombol Kontrol Kiri: Hanya Muncul di HP saat di Halaman Indeks -->
+        <!-- Tombol Kontrol Kiri di HP -->
         <div class="flex items-center gap-2 md:hidden flex-none pt-1">
-          <!-- About Button -->
-          <button onclick="openAboutPopup()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1.5 transition-colors" title="Informasi Jurnal">
+          <button onclick="openAboutPopup()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1.5 transition-colors" title="Informasi Catatan">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
           </button>
-          <!-- Theme Toggle -->
           <button onclick="switchTheme()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1.5 transition-colors" title="Ubah Mode Visual">
             <svg class="w-5 h-5 theme-toggle-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.95 4.95l1.59 1.59m10.91 10.91l1.59 1.59M3 12h2.25m13.5 0H21m-2.25-7.05l-1.59 1.59M6.54 17.46l-1.59 1.59M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
@@ -143,16 +112,15 @@
         </div>
       </div>
 
-      <!-- Tab Navigation Menu (Sangat Premium & Hemat Ruang) -->
       <div class="px-6 md:px-8 py-2.5 bg-[#ebe7db]/50 dark:bg-neutral-900/20 border-b border-[#e3dfd3] dark:border-neutral-800 flex gap-4 text-[10px] tracking-widest uppercase text-neutral-400 font-bold flex-none overflow-x-auto no-scrollbar">
         <button id="tab-btn-posts" onclick="switchSidebarTab('posts')" class="transition-colors hover:text-ink dark:hover:text-bone text-ink dark:text-bone">Artikel</button>
         <button id="tab-btn-scribbles" onclick="switchSidebarTab('scribbles')" class="transition-colors hover:text-ink dark:hover:text-bone">Coretan</button>
         <button id="tab-btn-timeline" onclick="switchSidebarTab('timeline')" class="transition-colors hover:text-ink dark:hover:text-bone">Linimasa</button>
+        <button id="tab-btn-profile" onclick="switchSidebarTab('profile')" class="transition-colors hover:text-ink dark:hover:text-bone">Profil Penulis</button>
       </div>
 
-      <!-- Container Filter Khusus Artikel (Hanya muncul saat tab Artikel aktif) -->
+      <!-- Filter khusus Artikel -->
       <div id="posts-control-container" class="p-6 md:p-8 pb-4 space-y-4 flex-none transition-all duration-300">
-        <!-- Pencarian Minimalis -->
         <div class="relative">
           <input 
             type="text" 
@@ -163,41 +131,46 @@
           <span class="absolute right-0 top-2.5 text-[10px] uppercase text-neutral-400 font-bold tracking-wider">Cari</span>
         </div>
 
-        <!-- Saringan Kategori -->
         <div class="space-y-1.5">
           <div class="text-[9px] uppercase tracking-widest text-neutral-400 font-bold">Pilah Kategori</div>
-          <div id="category-box" class="flex flex-wrap gap-1.5">
-            <!-- Diisi dinamis -->
-          </div>
+          <div id="category-box" class="flex flex-wrap gap-1.5"></div>
         </div>
       </div>
 
-      <!-- AREA ISI TAB (Scrollable Mandiri secara Terisolasi) -->
       <div class="flex-grow overflow-y-auto custom-scroll px-6 md:px-8 pb-4 pt-2">
-        
-        <!-- Tab 1: Daftar Artikel -->
         <div id="tab-content-posts" class="tab-pane">
-          <div id="index-list" class="divide-y divide-[#e3dfd3]/80 dark:divide-neutral-800/80">
-            <!-- Item list dinamis -->
-          </div>
+          <div id="index-list" class="divide-y divide-[#e3dfd3]/80 dark:divide-neutral-800/80"></div>
           <div id="search-not-found" class="hidden text-center py-10 font-serif italic text-neutral-400">
-            Artikel yang Anda cari tidak ditemukan.
+            Artikel yang kamu cari tidak ditemukan.
           </div>
         </div>
 
-        <!-- Tab 2: Coretan / Micro-thoughts -->
-        <div id="tab-content-scribbles" class="tab-pane hidden space-y-6">
-          <!-- Item coretan dinamis -->
-        </div>
+        <div id="tab-content-scribbles" class="tab-pane hidden space-y-6"></div>
 
-        <!-- Tab 3: Linimasa Karya / Jejak Proyek -->
-        <div id="tab-content-timeline" class="tab-pane hidden space-y-6 border-l border-[#c2bfae] dark:border-neutral-800 ml-2 pl-4 py-2">
-          <!-- Item milestone dinamis -->
-        </div>
+        <div id="tab-content-timeline" class="tab-pane hidden space-y-6 border-l border-[#c2bfae] dark:border-neutral-800 ml-2 pl-4 py-2"></div>
 
+        <!-- Tab 4: Profil Penulis -->
+        <div id="tab-content-profile" class="tab-pane hidden space-y-5 py-2">
+          <div class="p-5 bg-cream/60 dark:bg-charcoal/60 border border-[#e3dfd3] dark:border-neutral-800 rounded">
+            <div class="text-[9px] uppercase tracking-widest font-bold text-neutral-400 mb-1">Penulis Catatan</div>
+            <h3 id="profile-fullname" class="font-serif text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-1">
+              Muhadzdzib Nashrulloh
+            </h3>
+            <p id="profile-birth" class="text-xs font-serif italic text-neutral-500 dark:text-neutral-400 mb-3">
+              Semarang, 15 Agustus 2004
+            </p>
+            <p id="profile-bio" class="font-serif text-xs leading-relaxed text-neutral-700 dark:text-neutral-300 italic border-t border-[#e3dfd3] dark:border-neutral-800 pt-3">
+              -
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            <div class="text-[9px] uppercase tracking-widest font-bold text-neutral-400">Riwayat Pendidikan</div>
+            <div id="profile-education-list" class="space-y-3"></div>
+          </div>
+        </div>
       </div>
 
-      <!-- Footer Pinned di Kiri Bawah (Dinamis dari data.json) -->
       <footer class="p-4 border-t border-[#e3dfd3] dark:border-neutral-800 text-center text-[10px] tracking-widest uppercase text-neutral-400 font-bold bg-[#ebe7db]/20 dark:bg-[#1a1a19]/20 flex-none">
         <div class="flex justify-between px-4 text-[9px] uppercase tracking-widest text-neutral-400 font-bold mb-2">
           <span id="stat-count-posts">0 Artikel</span>
@@ -208,17 +181,14 @@
 
     </aside>
 
-    <!-- SISI KANAN: RUANG MEMBACA NOVEL (Comfortable Read Pane) -->
     <main id="panel-right" class="hidden md:flex md:col-span-7 lg:col-span-8 flex-col h-full max-h-full bg-cream dark:bg-charcoal overflow-hidden transition-colors duration-400 relative">
       
-      <!-- Progress Bar Membaca (Selalu Terkunci di Atas) -->
       <div class="w-full h-[2px] bg-neutral-200/50 dark:bg-neutral-800/50 flex-none">
         <div id="reading-progress-indicator" class="h-full bg-ink dark:bg-bone w-0 transition-all duration-75"></div>
       </div>
 
-      <!-- Header Kontrol Ruang Baca (Toggle Tema, Sound Ambiance, Resizer, & About) -->
+      <!-- Header Kontrol Ruang Baca -->
       <div class="px-6 md:px-12 py-4 md:py-5 border-b border-[#e3dfd3] dark:border-neutral-800 flex items-center justify-between bg-cream/90 dark:bg-charcoal/90 backdrop-blur-sm z-20 flex-none transition-colors duration-400">
-        <!-- Tombol Kembali khusus Mobile -->
         <button onclick="mobileExitReader()" class="md:hidden flex items-center gap-1 text-xs uppercase tracking-widest font-bold text-neutral-500">
           ← Kembali
         </button>
@@ -227,32 +197,29 @@
           Ruang Baca Artikel
         </div>
 
-        <!-- Tombol Aksi, Resizer Teks, About Info, & Minimalis Theme Toggle -->
-        <div class="flex items-center gap-3 sm:gap-4">
+        <div class="flex items-center gap-3 sm:gap-4 relative">
           
-          <!-- Fitur Ambiance Suara Hening Premium (Pure JS Web Audio API Brown Noise) -->
-          <button id="btn-sound-toggle" onclick="toggleAmbianceSound()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1 transition-colors flex items-center gap-1" title="Aktifkan Suara Ambiance Penenang">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-            </svg>
-            <span class="text-[9px] uppercase font-bold tracking-widest hidden lg:inline" id="sound-status-text">Hening</span>
+          <!-- Single Sound Ambiance Generator Button -->
+          <button id="btn-sound-toggle" onclick="toggleAmbianceSound()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1 transition-colors flex items-center gap-1.5" title="Aktifkan Suara Latar Ambiance">
+            <span class="text-sm">🔈</span>
+            <span class="text-[9px] uppercase font-bold tracking-widest hidden sm:inline" id="sound-status-text">Hening</span>
           </button>
 
-          <!-- Fitur Pengubah Ukuran Huruf (Font Resizer) -->
+          <!-- Font Resizer -->
           <div class="flex items-center gap-1 border border-[#c2bfae] dark:border-neutral-700 rounded-sm px-1.5 py-0.5" title="Sesuaikan Ukuran Teks">
             <button onclick="adjustFontSize(-1)" class="text-[10px] font-bold px-1 text-neutral-500 hover:text-ink dark:hover:text-bone transition-colors" title="Perkecil Teks">A-</button>
             <span class="text-neutral-300 dark:text-neutral-700 text-xs">|</span>
             <button onclick="adjustFontSize(1)" class="text-[10px] font-bold px-1 text-neutral-500 hover:text-ink dark:hover:text-bone transition-colors" title="Perbesar Teks">A+</button>
           </div>
 
-          <!-- Logo About -->
-          <button onclick="openAboutPopup()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1 transition-colors" title="Informasi Jurnal">
+          <!-- About Button -->
+          <button onclick="openAboutPopup()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1 transition-colors" title="Informasi Catatan">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
           </button>
 
-          <!-- Minimalist Theme Toggle Icon -->
+          <!-- Theme Toggle -->
           <button onclick="switchTheme()" class="text-neutral-500 hover:text-ink dark:hover:text-bone p-1 transition-colors" title="Ubah Mode Visual">
             <svg class="w-5 h-5 theme-toggle-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m0 13.5V21M4.95 4.95l1.59 1.59m10.91 10.91l1.59 1.59M3 12h2.25m13.5 0H21m-2.25-7.05l-1.59 1.59M6.54 17.46l-1.59 1.59M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" />
@@ -261,19 +228,15 @@
           
           <span class="text-[#e3dfd3] dark:text-neutral-700">|</span>
 
-          <!-- Salin Tautan -->
           <button onclick="copyLinkToArticle()" class="text-[10px] uppercase tracking-widest font-bold px-3 py-1.5 bg-ink text-cream dark:bg-bone dark:text-charcoal rounded hover:opacity-90 transition-opacity">
             Salin
           </button>
         </div>
       </div>
 
-      <!-- AREA BACA UTAMA (Scroll Internal Mandiri) -->
       <div id="reader-scroll-viewport" class="flex-grow overflow-y-auto custom-scroll px-6 md:px-16 py-8 md:py-12 pb-36">
         
-        <!-- Artikel Aktif -->
         <div id="active-story-container" class="max-w-2xl mx-auto hidden article-fade">
-          
           <header class="mb-10 border-b border-[#e3dfd3] dark:border-neutral-800 pb-8">
             <div class="flex items-center gap-3 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-bold">
               <span id="story-category" class="text-ink dark:text-bone border border-[#c2bfae] dark:border-neutral-700 px-2.5 py-0.5 rounded-sm">Kategori</span>
@@ -281,34 +244,31 @@
               <span id="story-reading-time">0 mnt baca</span>
             </div>
             <h2 id="story-title" class="font-serif text-3xl md:text-5xl tracking-tight leading-tight mb-4 font-bold">
-              Judul Artikel Sastra
+              Judul Artikel
             </h2>
             <div id="story-date" class="text-xs text-neutral-400 font-serif italic"></div>
           </header>
 
-          <!-- Teks Utama -->
-          <div id="story-text-body" class="font-novel leading-[1.85] text-neutral-800 dark:text-neutral-200 space-y-6 transition-all duration-200">
-            <!-- Injeksi teks -->
-          </div>
+          <div id="story-text-body" class="font-novel leading-[1.85] text-neutral-800 dark:text-neutral-200 space-y-6 transition-all duration-200"></div>
 
-          <!-- Section: Sumber Artikel (Dinamis dari data.json) -->
+          <!-- Section: Sumber Artikel -->
           <div id="story-source-container" class="mt-16 pt-6 border-t border-[#e3dfd3] dark:border-neutral-800 text-xs text-neutral-500 dark:text-neutral-400 font-serif italic space-y-1">
             <span class="uppercase tracking-widest text-[9px] font-bold text-neutral-400 block mb-1">Sumber / Referensi:</span>
-            <p id="story-source-text">Penjelasan mengenai sumber artikel ini...</p>
+            <p id="story-source-text"></p>
           </div>
-
         </div>
 
-        <!-- Selamat Datang (Saat Pertama Kali Buka) -->
         <div id="reader-welcome" class="h-full flex flex-col justify-center items-center text-center max-w-md mx-auto py-12">
           <p id="manifesto-text" class="font-serif text-2xl sm:text-3xl italic text-[#aba796] dark:text-neutral-500 mb-8 leading-relaxed">
-            "Membaca adalah jembatan sunyi yang melompati badai bising dunia."
+            "Membaca adalah jembatan sunyi yang membantu kamu melompati riuhnya dunia."
+          </p>
+          <p class="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">
+            Pilih artikel di panel kiri untuk mulai membaca.
           </p>
         </div>
 
       </div>
 
-      <!-- Tombol Kembali ke Atas -->
       <button 
         id="btn-scroll-top" 
         onclick="scrollReaderToTop()"
@@ -321,10 +281,9 @@
 
   </div>
 
-  <!-- FLOATING ACTION BUTTON & INTERACTION MENU (KANAN BAWAH) -->
-  <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+  <!-- FLOATING ACTION BUTTON & INTERACTION MENU (Otomatis Sembunyi Saat Membaca Artikel) -->
+  <div id="fab-container" class="fixed bottom-6 right-6 z-40 flex flex-col items-end transition-opacity duration-300">
     
-    <!-- Menu Popover Minimalis Elegan -->
     <div 
       id="fab-menu" 
       class="mb-3 w-64 bg-cream-sidebar dark:bg-charcoal-sidebar border border-[#c2bfae] dark:border-neutral-800 rounded-lg shadow-2xl p-2 opacity-0 pointer-events-none scale-95 transition-all duration-300 origin-bottom-right"
@@ -335,7 +294,6 @@
       </div>
       
       <div class="py-1 space-y-0.5">
-        <!-- Menu 1: Kritik & Saran -->
         <button 
           onclick="openFeedbackModal('kritik')" 
           class="w-full text-left px-3 py-2 text-xs font-serif italic hover:bg-cream dark:hover:bg-charcoal rounded flex items-center gap-2.5 text-neutral-800 dark:text-neutral-200 transition-colors group"
@@ -346,7 +304,6 @@
           <span>Kritik & Saran</span>
         </button>
 
-        <!-- Menu 2: Ajukan Kolaborasi -->
         <button 
           onclick="openFeedbackModal('kolaborasi')" 
           class="w-full text-left px-3 py-2 text-xs font-serif italic hover:bg-cream dark:hover:bg-charcoal rounded flex items-center gap-2.5 text-neutral-800 dark:text-neutral-200 transition-colors group"
@@ -357,7 +314,6 @@
           <span>Ajukan Kolaborasi</span>
         </button>
 
-        <!-- Menu 3: Bagikan Jurnal Ini -->
         <button 
           onclick="shareJournalViaWA()" 
           class="w-full text-left px-3 py-2 text-xs font-serif italic hover:bg-cream dark:hover:bg-charcoal rounded flex items-center gap-2.5 text-neutral-800 dark:text-neutral-200 transition-colors group"
@@ -365,12 +321,11 @@
           <svg class="w-4 h-4 text-neutral-400 group-hover:text-ink dark:group-hover:text-bone transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/>
           </svg>
-          <span>Bagikan Jurnal Ini</span>
+          <span>Bagikan Catatan Ini</span>
         </button>
       </div>
     </div>
 
-    <!-- Tombol Utama Floating -->
     <button 
       id="fab-main-btn" 
       onclick="toggleFabMenu()" 
@@ -405,7 +360,7 @@
       </div>
       
       <p class="text-xs font-serif italic text-neutral-500 dark:text-neutral-400 leading-relaxed" id="feedback-modal-desc">
-        Sampaikan pandangan, masukan, atau tanggapan Anda secara bebas. Pesan Anda akan terkirim langsung ke WhatsApp pribadi saya.
+        Sampaikan pandangan, masukan, atau tanggapan kamu secara bebas. Pesan kamu akan terkirim langsung ke WhatsApp pribadi saya.
       </p>
 
       <div class="space-y-3">
@@ -414,7 +369,7 @@
           <input 
             type="text" 
             id="feedback-sender-name" 
-            placeholder="misal: Pembaca Setia" 
+            placeholder="misal: Pembaca Catatan" 
             class="w-full bg-cream dark:bg-charcoal border border-[#c2bfae] dark:border-neutral-700 rounded p-2 text-xs font-serif italic focus:outline-none focus:border-ink dark:focus:border-bone transition-colors text-neutral-800 dark:text-neutral-200" 
           />
         </div>
@@ -424,7 +379,7 @@
           <textarea 
             id="feedback-text" 
             rows="4" 
-            placeholder="Tuliskan pesan Anda di sini..." 
+            placeholder="Tuliskan pesan kamu di sini..." 
             class="w-full bg-cream dark:bg-charcoal border border-[#c2bfae] dark:border-neutral-700 rounded p-2 text-xs font-serif italic focus:outline-none focus:border-ink dark:focus:border-bone transition-colors text-neutral-800 dark:text-neutral-200 resize-none"
           ></textarea>
         </div>
@@ -470,15 +425,13 @@
     <div class="w-11/12 max-w-md bg-cream-sidebar dark:bg-charcoal-sidebar border border-[#c2bfae] dark:border-neutral-800 p-6 shadow-2xl rounded flex flex-col gap-4 transform scale-95 transition-all duration-300" id="about-content-box">
       <div class="flex justify-between items-center border-b border-[#e3dfd3] dark:border-neutral-800 pb-3">
         <h4 class="font-serif text-lg font-bold text-ink dark:text-bone" id="about-title">
-          Tentang Jurnal
+          Tentang Website Ini
         </h4>
         <button onclick="closeAboutPopup()" class="text-neutral-400 hover:text-ink dark:hover:text-bone text-sm font-bold p-1">
           ✕ Tutup
         </button>
       </div>
-      <div id="about-text" class="font-serif text-sm leading-relaxed text-neutral-700 dark:text-neutral-300 space-y-3">
-        <!-- Paragraf deskripsi tentang web -->
-      </div>
+      <div id="about-text" class="font-serif text-sm leading-relaxed text-neutral-700 dark:text-neutral-300 space-y-3"></div>
       <div class="text-[10px] uppercase tracking-widest text-neutral-400 font-bold border-t border-[#e3dfd3] dark:border-neutral-800 pt-4 text-center">
         <span id="about-footer-text">Developed by Nash Studio</span>
       </div>
@@ -498,62 +451,58 @@
     let filterQuery = '';
     let currentFeedbackType = 'kritik';
     
-    // Config: Active Sidebar Tab
     let activeSidebarTab = 'posts';
     
-    // Config: Resizer Ukuran Teks
-    let currentFontSize = 18; // px
+    let currentFontSize = 18;
     const minFontSize = 14;
     const maxFontSize = 26;
 
-    // Config: Web Audio API Ambiance (Sintesis Brown Noise)
+    // --- SINTESIS SUARA / AMBIANCE HENING (Brown Noise Audio Context) ---
     let audioContextInstance = null;
     let noiseBufferNode = null;
     let noiseFilterNode = null;
     let isAmbiancePlaying = false;
 
-    // DATA CADANGAN LOKAL
     const backupDatabase = {
-      "blogTitle": "Jurnal & Catatan",
-      "blogSubtitle": "Kumpulan catatan, amatan hukum, dan kritik atas realitas keseharian.",
+      "blogTitle": "Catatan Naash",
+      "blogSubtitle": "Kumpulan catatan sejak 1 tahun terakhir",
       "footerText": "Developed by Nash Studio",
-      "manifesto": "\"Artikel adalah upaya sunyi untuk merapikan dunia yang bergerak terlampau bising. Di sini, tulisan tidak ditulis untuk memburu algoritma, melainkan untuk merawat ingatan.\"",
+      "manifesto": "\"Membaca adalah jembatan sunyi yang membantu kamu melompati riuhnya dunia. Di sini, tulisan dibuat untuk merawat ingatan dan berbagi pemikiran.\"",
       "about": {
-        "title": "Tentang Ruang Jurnal",
+        "title": "Tentang Website Ini",
         "studio": "Nash Studio",
         "author": "Muhadzdzib Nashrulloh",
         "footer": "Developed by Nash Studio",
-        "description": "Website jurnal pribadi ini dibangun dengan penuh dedikasi sebagai tempat kontemplasi digital yang sunyi. Menggunakan pendekatan desain 'Editorial-Clean' yang diinspirasi dari tata letak koran sastra klasik dan novel fisik.\n\nSistem navigasi dikompresi sedemikian rupa untuk meminimalisir scrolling berlebih menggunakan tata letak panel ganda mandiri. Seluruh anotasi serta catatan kaki dalam artikel dikemas menggunakan sistem popup melayang instan demi menjaga fokus mata agar tetap berada di dalam baris kalimat tanpa terinterupsi oleh perpindahan layar."
+        "description": "Website ini dibuat oleh Nash Studio (Muhadzdzib Nashrulloh, mahasiswa semester 6 prodi Hukum Keluarga Islam di STDI Imam Syafi'i Jember).\n\nAlasan utama website ini hadir adalah keinginan sederhana untuk berbagi informasi dan ilmu yang telah dipelajari sebelumnya, baik di dalam perkuliahan kampus maupun literatur dari luar kampus.\n\nDi sini, kamu bakal menemukan beragam artikel dengan topik seperti logika, pendapat, teknologi, agama, hukum, dan lain-lain. Seluruh tulisan disusun berdasarkan artikel ilmiah, jurnal, buku, serta bacaan lain yang pernah dibaca sebelumnya."
+      },
+      "profile": {
+        "fullName": "Muhadzdzib Nashrulloh",
+        "birthDetails": "Semarang, 15 Agustus 2004",
+        "bio": "Mahasiswa semester 6 prodi Hukum Keluarga Islam di STDI Imam Syafi'i Jember. Tertarik pada studi hukum, analisis logika, teknologi, dan penulisan ilmiah.",
+        "education": [
+          {
+            "institution": "STDI Imam Syafi'i Jember",
+            "major": "S1 Hukum Keluarga Islam (Semester 6)",
+            "period": "2022 - Sekarang"
+          },
+          {
+            "institution": "MA / SMA Formal",
+            "major": "Jurusan Keagamaan / IPA",
+            "period": "2019 - 2022"
+          }
+        ]
       },
       "scribbles": [
         {
           "date": "2026-07-01",
           "text": "Teknologi seharusnya membuat kita memiliki lebih banyak waktu luang untuk merenung, namun entah mengapa hari ini kita justru merasa lebih sibuk dan lelah daripada generasi sebelum kita."
-        },
-        {
-          "date": "2026-06-12",
-          "text": "Membaca karya sastra yang baik adalah satu-satunya cara melatih empati terdalam kita tanpa harus mengalami tragedi itu secara langsung."
-        },
-        {
-          "date": "2026-05-24",
-          "text": "Kesederhanaan dalam desain visual bukanlah tentang menghilangkan elemen demi terlihat kosong, melainkan tentang meletakkan segala sesuatu tepat pada tempat yang seharusnya."
         }
       ],
       "timeline": [
         {
           "year": "2026",
-          "title": "Peluncuran Jurnal & Catatan",
-          "description": "Membangun ruang kontemplasi mandiri ini bersama Nash Studio untuk membagikan gagasan-gagasan kritis."
-        },
-        {
-          "year": "2025",
-          "title": "Rilis Antologi Artikel Pertama",
-          "description": "Menerbitkan buku kumpulan artikel pendek tentang kebudayaan digital yang didistribusikan secara independen."
-        },
-        {
-          "year": "2023",
-          "title": "Mendirikan Studio Kreatif",
-          "description": "Fokus pada pengembangan desain antarmuka berbasis minimalisme dan kebersihan editorial."
+          "title": "Peluncuran Catatan Naash",
+          "description": "Membangun ruang kontemplasi mandiri ini bersama Nash Studio."
         }
       ],
       "posts": [
@@ -562,36 +511,9 @@
           "title": "Membongkar Ilusi Kepastian di Era Algoritma",
           "date": "2026-07-08",
           "category": "Teknologi",
-          "source": "Ditulis secara independen berdasarkan observasi sosiologis atas pola konsumsi media sosial generasi urban di Indonesia sepanjang tahun 2024-2026.",
-          "content": "Kita sering kali mengira bahwa linimasa digital kita mencerminkan dunia yang sebenarnya. Padahal, kita sedang dikurung dalam ruang gema yang dirancang khusus untuk memuaskan bias kita sendiri. Algoritma rekomendasi tidak pernah peduli pada kebenaran objektif; prioritas tunggal mereka adalah durasi perhatian kita. Ketika setiap guliran layar disesuaikan dengan apa yang ingin kita lihat, kita perlahan-lahan kehilangan kapasitas untuk berhadapan dengan perbedaan pendapat.\n\nKetergantungan akut pada keputusan otomatis ini berangsur-angsur mengikis kemampuan kita untuk menoleransi ketidakpastian [1]. Di dunia nyata, keputusan membutuhkan proses kontemplasi yang slow, penuh keraguan, dan negosiasi internal. Namun, dunia digital menuntut respon instan yang hitam-putih. Menolak atau menerima, menyukai atau membenci. Ruang abu-abu yang seharusnya menjadi tempat bertumbuhnya kebijaksanaan kini dinilai sebagai bentuk ketidaktegasan.\n\nJika tren ini terus berlanjut, kita akan mendapati diri kita berada di tengah masyarakat yang sangat terpolarisasi. Berpikir kritis bukan lagi menjadi instrumen analisis, melainkan barang mewah yang melelahkan karena harus melawan arus informasi yang didesain untuk membuat kita nyaman. Melawan dominasi algoritma ini bukan berarti kita harus meninggalkan teknologi sepenuhnya, melainkan membangun kesadaran aktif untuk sesekali memilih jalan yang tidak direkomendasikan oleh sistem [2].",
-          "footnotes": [
-            "Bias konfirmasi dalam algoritma media sosial sering memicu polarisasi opini publik yang ekstrem.",
-            "Metode pembacaan kritis secara acak (algorithmic detox) direkomendasikan untuk memulihkan objektivitas berpikir."
-          ]
-        },
-        {
-          "id": 2,
-          "title": "Catatan Pinggir tentang Hak Digital sebagai Hak Asasi",
-          "date": "2026-06-20",
-          "category": "Hukum",
-          "source": "Diadaptasi dari kertas kebijakan advokasi pelindungan privasi siber dan hak asasi warga negara di era transformasi digital nasional.",
-          "content": "Dalam beberapa dekade terakhir, definisi tentang ruang privat telah bergeser secara radikal. Konstitusi kita secara historis sangat fasih melindungi hak atas privasi rumah tangga dan surat-menyurat fisik. Namun, bagaimana dengan rumah digital kita? Kebocoran data pribadi yang berulang kali terjadi tanpa adanya sanksi hukum yang menjerakan menunjukkan adanya celah regulasi yang menganga antara teks hukum kuno dan realitas siber kontemporer.\n\nHukum sering kali terlambat mengantisipasi lompatan teknologi. Ketika korporasi teknologi dapat memetakan kebiasaan belanja, preferensi politik, hingga rute perjalanan harian kita tanpa persetujuan yang benar-benar disadari (*informed consent*), konsep kedaulatan individu sedang berada di ujung tanduk. Menyerahkan pelindungan data pribadi hanya pada kebijakan privasi yang panjang dan rumit adalah bentuk pengabaian sistemis terhadap hak warga negara [1].\n\nNegara tidak bisa lagi memandang pelindungan data sekadar sebagai instrumen administrasi atau pemanis regulasi bisnis. Pelindungan data digital harus diletakkan pada derajat yang sama dengan hak asasi manusia lainnya. Tanpa adanya kepastian hukum yang menuntut pertanggungjawaban mutlak dari pengelola data—baik publik maupun swasta—warga negara akan terus berada dalam posisi rentan terhadap eksploitasi dan pengawasan massal yang tidak sah [2].",
-          "footnotes": [
-            "Persetujuan syarat dan ketentuan (Terms of Service) sering kali dirancang membingungkan bagi pengguna awam.",
-            "Pentingnya penerapan asas akuntabilitas mutlak (strict liability) bagi kegagalan pelindungan data pribadi."
-          ]
-        },
-        {
-          "id": 3,
-          "title": "Romantisisme Buku Fisik dan Kehilangan yang Kita Rayakan",
-          "date": "2026-05-14",
-          "category": "Pendapat",
-          "source": "Sebuah esai reflektif personal yang membandingkan psikologi kognitif membaca buku kertas dengan membaca teks digital pada layar gawai.",
-          "content": "Membaca buku fisik di era layar sentuh sering kali dianggap sebagai bentuk perlawanan klise atau sekadar nostalgia usang. Namun, ada aspek kognitif dan sensoris yang hilang ketika kita memindahkan seluruh aktivitas membaca ke dalam format digital. Aroma kertas, berat buku yang berpindah dari tangan kanan ke tangan kiri seiring habisnya halaman, dan goresan pensil di margin kertas bukanlah sekadar sensasi romantis, melainkan jangkar memori yang membantu otak memetakan informasi secara spasial.\n\nPenelitian tentang membaca digital menunjukkan bahwa pembaca cenderung melakukan pemindaian (*scanning*) alih-alih pembacaan mendalam (*deep reading*) saat berada di depan layar [1]. Kita membaca dengan cepat untuk menemukan kata kunci, namun kehilangan detail narasi dan kedalaman argumen. Gawai yang kita gunakan untuk membaca juga merupakan gawai yang sama yang terus-menerus menginterupsi kita dengan notifikasi surel, pesan instan, dan godaan media sosial.\n\nEfisiensi buku digital memang tidak terbantahkan. Kita bisa membawa ribuan judul dalam satu genggaman tipis. Namun, efisiensi sering kali mengorbankan kedalaman pengalaman. Menghabiskan waktu berjam-jam dengan buku fisik adalah bentuk latihan fokus yang paling murni di dunia modern yang bising ini. Kehilangan sensorik dan ketenangan linier itulah yang sebenarnya sedang kita rindu dan rayakan kembali setiap kali kita membuka lembaran kertas baru [2].",
-          "footnotes": [
-            "Studi menunjukkan retensi pemahaman teks panjang pada buku fisik secara signifikan lebih tinggi dibanding teks digital.",
-            "Kehadiran fisik buku menciptakan ruang jeda mental yang bebas dari distraksi sinyal digital."
-          ]
+          "source": "Ditulis secara independen berdasarkan observasi sosiologis atas pola konsumsi media sosial.",
+          "content": "Kita sering kali mengira bahwa linimasa digital kita mencerminkan dunia yang sebenarnya...",
+          "footnotes": ["Bias konfirmasi dalam algoritma media sosial."]
         }
       ]
     };
@@ -601,7 +523,6 @@
       loadSavedFontSize();
       getBlogDatabase();
 
-      // Listeners
       const searchBox = document.getElementById('search-input');
       if (searchBox) searchBox.addEventListener('input', runSearch);
       
@@ -610,22 +531,6 @@
       
       window.addEventListener('hashchange', router);
       window.addEventListener('resize', applyResponsiveViews);
-
-      // Listener klik di luar modal 'About'
-      const aboutPopup = document.getElementById('about-popup');
-      if (aboutPopup) {
-        aboutPopup.addEventListener('click', (e) => {
-          if (e.target === aboutPopup) closeAboutPopup();
-        });
-      }
-
-      // Listener klik di luar modal 'Feedback'
-      const feedbackModal = document.getElementById('feedback-modal');
-      if (feedbackModal) {
-        feedbackModal.addEventListener('click', (e) => {
-          if (e.target === feedbackModal) closeFeedbackModal();
-        });
-      }
     });
 
     async function getBlogDatabase() {
@@ -637,7 +542,6 @@
         console.warn("Menggunakan cadangan data lokal.");
         dbData = backupDatabase;
       }
-      
       initStructure();
     }
 
@@ -645,12 +549,12 @@
       if (!dbData) return;
 
       const titleEl = document.getElementById('site-title');
-      if (titleEl) titleEl.textContent = dbData.blogTitle || "Jurnal & Catatan";
+      if (titleEl) titleEl.textContent = dbData.blogTitle || "Catatan Naash";
       
       const subtitleEl = document.getElementById('site-subtitle');
-      if (subtitleEl) subtitleEl.textContent = dbData.blogSubtitle || "";
+      if (subtitleEl) subtitleEl.textContent = dbData.blogSubtitle || "Kumpulan catatan sejak 1 tahun terakhir";
       
-      document.title = dbData.blogTitle || "Jurnal & Catatan";
+      document.title = dbData.blogTitle || "Catatan Naash";
 
       if (dbData.manifesto) {
         const manifestoEl = document.getElementById('manifesto-text');
@@ -663,7 +567,7 @@
       
       if (dbData.about) {
         const aboutTitleEl = document.getElementById('about-title');
-        if (aboutTitleEl) aboutTitleEl.textContent = dbData.about.title || "Tentang Jurnal";
+        if (aboutTitleEl) aboutTitleEl.textContent = dbData.about.title || "Tentang Website Ini";
         
         const aboutFooterEl = document.getElementById('about-footer-text');
         if (aboutFooterEl) aboutFooterEl.textContent = dbData.about.footer || footerTextVal;
@@ -692,23 +596,21 @@
       buildCategoryFilters();
       buildScribblesTab();
       buildTimelineTab();
+      buildProfileTab();
       router();
     }
 
     function switchSidebarTab(tabName) {
       activeSidebarTab = tabName;
       
-      const tabs = ['posts', 'scribbles', 'timeline'];
+      const tabs = ['posts', 'scribbles', 'timeline', 'profile'];
       tabs.forEach(t => {
         const btn = document.getElementById(`tab-btn-${t}`);
         if (btn) {
-          if (t === tabName) {
-            btn.className = "text-ink dark:text-bone font-bold transition-colors";
-          } else {
-            btn.className = "text-neutral-400 dark:text-neutral-500 hover:text-ink dark:hover:text-bone transition-colors";
-          }
+          btn.className = (t === tabName) 
+            ? "text-ink dark:text-bone font-bold transition-colors" 
+            : "text-neutral-400 dark:text-neutral-500 hover:text-ink dark:hover:text-bone transition-colors";
         }
-        
         const pane = document.getElementById(`tab-content-${t}`);
         if (pane) {
           if (t === tabName) pane.classList.remove('hidden');
@@ -725,7 +627,6 @@
 
     function buildCategoryFilters() {
       if (!dbData || !dbData.posts) return;
-      
       const categories = ['Semua', ...new Set(dbData.posts.map(p => p.category))];
       const box = document.getElementById('category-box');
       if (!box) return;
@@ -734,14 +635,12 @@
       categories.forEach(cat => {
         const btn = document.createElement('button');
         btn.textContent = cat;
-        
         const isCurrent = cat === categorySelected;
         btn.className = `text-[9px] tracking-wider uppercase px-2 py-1 rounded transition-all ${
           isCurrent 
             ? 'bg-ink text-cream dark:bg-bone dark:text-charcoal font-bold' 
             : 'bg-[#ebe7db] dark:bg-[#252524] text-neutral-600 dark:text-neutral-400 hover:bg-neutral-300 dark:hover:bg-neutral-800'
         }`;
-
         btn.onclick = () => {
           categorySelected = cat;
           buildCategoryFilters();
@@ -823,7 +722,6 @@
       dbData.scribbles.forEach(item => {
         const card = document.createElement('div');
         card.className = "p-4 bg-cream/50 dark:bg-[#1a1a19]/50 border border-[#e3dfd3] dark:border-neutral-800 rounded-sm relative";
-        
         card.innerHTML = `
           <div class="text-[9px] tracking-wider uppercase text-neutral-400 mb-2 font-bold font-sans">
             ${formatNiceDate(item.date)}
@@ -849,7 +747,6 @@
       dbData.timeline.forEach(item => {
         const wrap = document.createElement('div');
         wrap.className = "relative mb-6 last:mb-2";
-        
         wrap.innerHTML = `
           <span class="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-ink dark:bg-bone"></span>
           <div class="text-xs font-bold uppercase tracking-widest text-neutral-400 mb-1">${item.year}</div>
@@ -858,6 +755,39 @@
         `;
         target.appendChild(wrap);
       });
+    }
+
+    function buildProfileTab() {
+      if (!dbData || !dbData.profile) return;
+      const p = dbData.profile;
+
+      const nameEl = document.getElementById('profile-fullname');
+      if (nameEl) nameEl.textContent = p.fullName || "Muhadzdzib Nashrulloh";
+
+      const birthEl = document.getElementById('profile-birth');
+      if (birthEl) birthEl.textContent = p.birthDetails || "";
+
+      const bioEl = document.getElementById('profile-bio');
+      if (bioEl) bioEl.textContent = p.bio || "";
+
+      const eduTarget = document.getElementById('profile-education-list');
+      if (!eduTarget) return;
+      eduTarget.innerHTML = '';
+
+      if (p.education && p.education.length > 0) {
+        p.education.forEach(edu => {
+          const item = document.createElement('div');
+          item.className = "p-3 bg-cream/40 dark:bg-charcoal/40 border border-[#e3dfd3] dark:border-neutral-800 rounded-sm";
+          item.innerHTML = `
+            <div class="flex justify-between text-[9px] font-bold uppercase tracking-widest text-neutral-400 mb-1">
+              <span>${edu.period}</span>
+            </div>
+            <h5 class="font-serif text-sm font-bold text-neutral-900 dark:text-neutral-100">${edu.institution}</h5>
+            <p class="text-xs font-serif italic text-neutral-500 dark:text-neutral-400">${edu.major || ''}</p>
+          `;
+          eduTarget.appendChild(item);
+        });
+      }
     }
 
     function runSearch(e) {
@@ -879,6 +809,20 @@
       }
       displayPostList();
       applyResponsiveViews();
+      updateFabVisibility();
+    }
+
+    function updateFabVisibility() {
+      const fab = document.getElementById('fab-container');
+      if (!fab) return;
+      
+      // Jika user sedang membaca artikel (activePostId tidak null), sembunyikan FAB sepenuhnya
+      if (activePostId !== null) {
+        fab.classList.add('opacity-0', 'pointer-events-none');
+        closeFabMenu();
+      } else {
+        fab.classList.remove('opacity-0', 'pointer-events-none');
+      }
     }
 
     function displayWelcome() {
@@ -889,7 +833,7 @@
       if (readerWelcome) readerWelcome.classList.remove('hidden');
       
       const readerBreadcrumb = document.getElementById('reader-breadcrumb');
-      if (readerBreadcrumb) readerBreadcrumb.textContent = "Meja Baca Jurnal";
+      if (readerBreadcrumb) readerBreadcrumb.textContent = "Meja Baca Catatan";
       
       const progressIndicator = document.getElementById('reading-progress-indicator');
       if (progressIndicator) progressIndicator.style.width = '0%';
@@ -926,7 +870,6 @@
 
       renderNarrativeText(post.content);
 
-      // Injeksi seksi Sumber/Referensi
       const sourceTextEl = document.getElementById('story-source-text');
       const sourceContainer = document.getElementById('story-source-container');
       if (sourceTextEl) {
@@ -956,12 +899,9 @@
       const paragraphs = content.split('\n\n');
       paragraphs.forEach((para, idx) => {
         const p = document.createElement('p');
-        
-        if (idx === 0) {
-          p.className = 'drop-cap text-neutral-800 dark:text-neutral-200 leading-[1.85]';
-        } else {
-          p.className = 'text-neutral-800 dark:text-neutral-200 leading-[1.85]';
-        }
+        p.className = (idx === 0) 
+          ? 'drop-cap text-neutral-800 dark:text-neutral-200 leading-[1.85]' 
+          : 'text-neutral-800 dark:text-neutral-200 leading-[1.85]';
 
         let txt = para.replace(/\[(\d+)\]/g, (match, num) => {
           return `<sup class="font-sans text-[10px] font-bold"><a href="javascript:void(0)" onclick="openFootnotePopup(${num}, event)" class="text-neutral-400 dark:text-neutral-500 hover:text-ink dark:hover:text-bone hover:underline px-0.5">[${num}]</a></sup>`;
@@ -983,22 +923,76 @@
         if (activePostId !== null) {
           leftPanel.classList.add('hidden');
           leftPanel.classList.remove('flex');
-          
           rightPanel.classList.remove('hidden');
           rightPanel.classList.add('flex');
         } else {
           leftPanel.classList.remove('hidden');
           leftPanel.classList.add('flex');
-          
           rightPanel.classList.add('hidden');
           rightPanel.classList.remove('flex');
         }
       } else {
         leftPanel.classList.remove('hidden');
         leftPanel.classList.add('flex');
-        
         rightPanel.classList.remove('hidden');
         rightPanel.classList.add('flex');
+      }
+    }
+
+    // --- SINTESIS SUARA AMBIANCE HENING TUNGGAL (Brown Noise) ---
+    function toggleAmbianceSound() {
+      const textNode = document.getElementById('sound-status-text');
+      const btnSound = document.getElementById('btn-sound-toggle');
+      
+      if (!isAmbiancePlaying) {
+        try {
+          if (!audioContextInstance) {
+            audioContextInstance = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioContextInstance.state === 'suspended') {
+            audioContextInstance.resume();
+          }
+
+          const bufferSize = 10 * audioContextInstance.sampleRate;
+          const noiseBuffer = audioContextInstance.createBuffer(1, bufferSize, audioContextInstance.sampleRate);
+          const outputData = noiseBuffer.getChannelData(0);
+          
+          let lastOutValue = 0.0;
+          for (let i = 0; i < bufferSize; i++) {
+            const whiteNoiseVal = Math.random() * 2 - 1;
+            outputData[i] = (lastOutValue + (0.02 * whiteNoiseVal)) / 1.02;
+            lastOutValue = outputData[i];
+            outputData[i] *= 3.5;
+          }
+
+          noiseBufferNode = audioContextInstance.createBufferSource();
+          noiseBufferNode.buffer = noiseBuffer;
+          noiseBufferNode.loop = true;
+
+          noiseFilterNode = audioContextInstance.createBiquadFilter();
+          noiseFilterNode.type = 'lowpass';
+          noiseFilterNode.frequency.setValueAtTime(350, audioContextInstance.currentTime);
+
+          noiseBufferNode.connect(noiseFilterNode);
+          noiseFilterNode.connect(audioContextInstance.destination);
+
+          noiseBufferNode.start(0);
+          isAmbiancePlaying = true;
+          if (textNode) textNode.textContent = "Ambiance";
+          if (btnSound) btnSound.classList.add('text-amber-600', 'dark:text-amber-400');
+        } catch (e) {
+          console.error("Browser tidak mendukung Web Audio API.", e);
+        }
+      } else {
+        if (noiseBufferNode) {
+          try {
+            noiseBufferNode.stop();
+          } catch(err) {}
+          noiseBufferNode.disconnect();
+        }
+        isAmbiancePlaying = false;
+        if (textNode) textNode.textContent = "Hening";
+        if (btnSound) btnSound.classList.remove('text-amber-600', 'dark:text-amber-400');
       }
     }
 
@@ -1006,7 +1000,6 @@
       const menu = document.getElementById('fab-menu');
       const iconOpen = document.getElementById('fab-icon-open');
       const iconClose = document.getElementById('fab-icon-close');
-      
       if (!menu) return;
       const isHidden = menu.classList.contains('opacity-0');
       
@@ -1016,10 +1009,7 @@
         if (iconOpen) iconOpen.classList.add('hidden');
         if (iconClose) iconClose.classList.remove('hidden');
       } else {
-        menu.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
-        menu.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
-        if (iconOpen) iconOpen.classList.remove('hidden');
-        if (iconClose) iconClose.classList.add('hidden');
+        closeFabMenu();
       }
     }
 
@@ -1048,12 +1038,12 @@
       
       if (type === 'kritik') {
         if (title) title.textContent = "Kritik & Saran";
-        if (desc) desc.textContent = "Sampaikan pandangan, masukan, atau perbaikan untuk jurnal ini. Pesan Anda akan terkirim langsung ke WhatsApp pribadi saya.";
-        if (label) label.textContent = "Kritik & Saran Anda";
-        if (textarea) textarea.placeholder = "Tuliskan masukan atau kritik membangun di sini...";
+        if (desc) desc.textContent = "Sampaikan pandangan, masukan, atau tanggapan kamu secara bebas. Pesan kamu akan terkirim langsung ke WhatsApp pribadi saya.";
+        if (label) label.textContent = "Kritik & Saran Kamu";
+        if (textarea) textarea.placeholder = "Tuliskan masukan atau kritik membangun kamu di sini...";
       } else if (type === 'kolaborasi') {
         if (title) title.textContent = "Ajukan Kolaborasi";
-        if (desc) desc.textContent = "Tertarik untuk berdiskusi, menulis bersama, atau mengajukan proyek kerja sama? Silakan tuliskan detail rencana Anda.";
+        if (desc) desc.textContent = "Tertarik untuk berdiskusi, menulis bersama, atau mengajukan proyek kerja sama? Silakan tuliskan detail rencana kamu.";
         if (label) label.textContent = "Rencana / Ide Kolaborasi";
         if (textarea) textarea.placeholder = "Halo, saya bermaksud untuk berdiskusi mengenai proyek/tulisan...";
       }
@@ -1091,7 +1081,7 @@
       let message = "";
 
       if (currentFeedbackType === 'kritik') {
-        message = `Halo Muhadzdzib, saya ${name} ingin menyampaikan kritik & saran mengenai Jurnal & Catatan:\n\n"${text}"`;
+        message = `Halo Muhadzdzib, saya ${name} ingin menyampaikan kritik & saran mengenai Catatan Naash:\n\n"${text}"`;
       } else {
         message = `Halo Muhadzdzib, saya ${name} ingin mengajukan ide kolaborasi/diskusi:\n\n"${text}"`;
       }
@@ -1106,7 +1096,7 @@
     function shareJournalViaWA() {
       closeFabMenu();
       const link = window.location.href;
-      const shareText = `Mari membaca 'Jurnal & Catatan' — ruang kontemplasi digital dan amatan realitas secara jujur:\n${link}`;
+      const shareText = `Mari membaca 'Catatan Naash' — ruang kontemplasi digital dan amatan realitas secara jujur:\n${link}`;
       const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
       window.open(waUrl, '_blank');
     }
@@ -1174,64 +1164,6 @@
       }
       const target = document.getElementById('story-text-body');
       if (target) target.style.fontSize = `${currentFontSize}px`;
-    }
-
-    function toggleAmbianceSound() {
-      const textNode = document.getElementById('sound-status-text');
-      
-      if (!isAmbiancePlaying) {
-        try {
-          if (!audioContextInstance) {
-            audioContextInstance = new (window.AudioContext || window.webkitAudioContext)();
-          }
-          
-          if (audioContextInstance.state === 'suspended') {
-            audioContextInstance.resume();
-          }
-
-          const bufferSize = 10 * audioContextInstance.sampleRate;
-          const noiseBuffer = audioContextInstance.createBuffer(1, bufferSize, audioContextInstance.sampleRate);
-          const outputData = noiseBuffer.getChannelData(0);
-          
-          let lastOutValue = 0.0;
-          for (let i = 0; i < bufferSize; i++) {
-            const whiteNoiseVal = Math.random() * 2 - 1;
-            outputData[i] = (lastOutValue + (0.02 * whiteNoiseVal)) / 1.02;
-            lastOutValue = outputData[i];
-            outputData[i] *= 3.5;
-          }
-
-          noiseBufferNode = audioContextInstance.createBufferSource();
-          noiseBufferNode.buffer = noiseBuffer;
-          noiseBufferNode.loop = true;
-
-          noiseFilterNode = audioContextInstance.createBiquadFilter();
-          noiseFilterNode.type = 'lowpass';
-          noiseFilterNode.frequency.setValueAtTime(350, audioContextInstance.currentTime);
-
-          noiseBufferNode.connect(noiseFilterNode);
-          noiseFilterNode.connect(audioContextInstance.destination);
-
-          noiseBufferNode.start(0);
-          isAmbiancePlaying = true;
-          if (textNode) textNode.textContent = "Nyala";
-          const btnSound = document.getElementById('btn-sound-toggle');
-          if (btnSound) btnSound.classList.add('text-amber-600', 'dark:text-amber-400');
-        } catch (e) {
-          console.error("Browser tidak mendukung Web Audio API secara langsung.", e);
-        }
-      } else {
-        if (noiseBufferNode) {
-          try {
-            noiseBufferNode.stop();
-          } catch(err) {}
-          noiseBufferNode.disconnect();
-        }
-        isAmbiancePlaying = false;
-        if (textNode) textNode.textContent = "Hening";
-        const btnSound = document.getElementById('btn-sound-toggle');
-        if (btnSound) btnSound.classList.remove('text-amber-600', 'dark:text-amber-400');
-      }
     }
 
     function handleViewportScroll() {
