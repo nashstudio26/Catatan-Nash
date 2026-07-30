@@ -12,18 +12,38 @@
   },
   "profile": {
     "fullName": "Muhadzdzib Nashrulloh",
-    "birthDetails": "Semarang, 15 Agustus 2004",
+    "birthDetails": "Wonogiri, 15 November 2005",
     "bio": "Mahasiswa semester 6 prodi Hukum Keluarga Islam di STDI Imam Syafi'i Jember. Tertarik pada studi hukum, analisis logika, teknologi, dan penulisan ilmiah.",
     "education": [
       {
         "institution": "STDI Imam Syafi'i Jember",
         "major": "S1 Hukum Keluarga Islam (Semester 6)",
-        "period": "2022 - Sekarang"
+        "period": "2023 - Sekarang"
       },
       {
-        "institution": "MA / SMA Formal",
-        "major": "Jurusan Keagamaan / IPA",
+        "institution": "I'dad Lughowi STDIIS Jember",
+        "major": "Sumbersari, Jember, Jawa Timur",
+        "period": "2022 - 2023"
+      },
+      {
+        "institution": "MA Darul Fikri Ponorogo",
+        "major": "Kauman, Ponorogo, Jawa Timur",
         "period": "2019 - 2022"
+      },
+      {
+        "institution": "MTs Darul Fikri Ponorogo",
+        "major": "Kauman, Ponorogo, Jawa Timur",
+        "period": "2019 - 2022"
+      },
+      {
+        "institution": "SDIT Nur Rohman Slogohimo",
+        "major": "Slogohimo, Wonogiri, Jawa Tengah",
+        "period": "2010 - 2016"
+      },
+      {
+        "institution": "TK Islam Nur Rohman Slogohimo",
+        "major": "Slogohimo, Wonogiri, Jawa Tengah",
+        "period": "2009 - 2010"
       }
     ]
   },
