@@ -1,6 +1,6 @@
 {
   "blogTitle": "Catatan Naash",
-  "blogSubtitle": "Kumpulan catatan sejak 1 tahun terakhir",
+  "blogSubtitle": "Kumpulan catatan pribadi Nash Studio",
   "footerText": "Developed by Nash Studio",
   "manifesto": "\"Membaca adalah jembatan sunyi yang membantu kamu melompati riuhnya dunia. Di sini, tulisan dibuat untuk merawat ingatan dan berbagi pemikiran.\"",
   "about": {
@@ -68,12 +68,12 @@
       "description": "Membangun ruang kontemplasi mandiri ini bersama Nash Studio untuk membagikan catatan-catatan kritis."
     },
     {
-      "year": "2025",
+      "year": "2026",
       "title": "Rilis Antologi Artikel Pertama",
       "description": "Menerbitkan kumpulan tulisan pendek tentang kebudayaan digital yang didistribusikan secara independen."
     },
     {
-      "year": "2023",
+      "year": "2021",
       "title": "Mendirikan Nash Studio",
       "description": "Fokus pada pengembangan desain antarmuka berbasis minimalisme dan kebersihan editorial."
     }
@@ -81,7 +81,7 @@
   "posts": [
      {
       "id": 0,
-      "title": "Apa Itu Logical Fallacy? Memahami Kekeliruan Penalaran dalam Berpikir Kritis",
+      "title": "Apa Itu Logical Fallacy?",
       "date": "2026-08-02",
       "category": "Logika",
       "source": "Disusun berdasarkan studi literatur pengantar logika formal, teori argumentasi, dan psikologi kognitif dalam berpikir kritis.",
