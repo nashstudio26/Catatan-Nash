@@ -74,8 +74,17 @@
     }
   ],
   "posts": [
-     {
+    {
       "id": 0,
+      "title": "Dari Hukum Keluarga Islam ke Baris Kode: Cerita Pengalaman Pribadi",
+      "date": "2026-08-07",
+      "category": "Pengalaman",
+      "source": "Pengalaman pribadi",
+      "content": "Sebelum membaca lebih jauh, perlu kuberi spoiler di awal bahwa seluruh isi tulisan ini adalah kisah nyata dari pengalamanku sendiri, tanpa ada yang dibuat-buat sama sekali. Ini adalah cerita tentang bagaimana seorang mahasiswa Hukum Keluarga Islam (HKI) bisa sangat terobsesi dengan dunia coding dan IT. Kalau ada yang bertanya kenapa aku sering terlihat asyik di depan layar menatap baris kode rumit dengan tampilan mode gelap, jawabannya sederhana: ketertarikan ini sudah tumbuh jauh sebelum aku mengenal dunia perkuliahan.\n\nSejak SD, aku sudah tertarik dengan komputer, meskipun waktu itu aku bahkan belum punya komputer sendiri di rumah. Di antara teman-teman sebaya yang kebanyakan tidak terlalu peduli dengan urusan teknologi, aku merasa jadi salah satu yang paling antusias—walaupun sejujurnya, aku juga tidak pintar-pintar amat. Rasa penasaran saja yang membuatku selalu ingin tahu bagaimana alat itu bekerja.\n\nMemasuki masa SMA di MA Darul Fikri, minat tersebut makin terasa. Aku mulai senang mengedit foto dan video, serta makin penasaran dengan seluk-beluk IT. Bahkan, algoritma media sosial seperti TikTok dan Instagram-ku perlahan berubah, didominasi oleh konten-konten seputar coding, pemrograman, dan perkembangan teknologi. Dari sana, timbul keinginan kuat untuk melanjutkan kuliah di jurusan IT.\n\nNamun, jalan hidup punya jalurnya sendiri. Orang tuaku adalah sosok yang sangat agamis. Beliau memang tidak pernah memaksaku untuk masuk ke kampus atau jurusan Islam tertentu, tapi secara tidak langsung, aku bisa merasakan ada harapan besar agar aku menempuh pendidikan di lembaga berbasis Islam. Demi menghormati harapan tersebut, aku akhirnya memilih untuk mendaftar di STDI Imam Syafi'i Jember pada program studi Hukum Keluarga Islam (HKI).\n\nMeski menempuh jalur akademis yang berbeda, gairahku pada dunia teknologi tidak pernah surut. Di sela-sela kesibukan kuliah atau saat ada waktu luang, aku biasa mengisinya dengan menonton video tutorial coding untuk pemula—mulai dari dasar HTML, CSS, hingga Python. Menariknya, belajar coding di masa sekarang terasa jauh lebih terbantu karena adanya teknologi AI yang memudahkan pemahaman logika pemrograman.\n\nAkhir-akhir ini, aku makin sering bereksperimen membuat website sendiri. Ketika sebuah proyek kecil berhasil selesai, aku suka memamerkannya ke teman dekat. Salah seorang temanku sempat memberi saran, \"Kenapa skill ini tidak dimanfaatkan buat hasilkan uang saja? Coba buka jasa bikin website atau jual proyekmu.\" Saran itu tentu menarik, tetapi sampai saat ini aku masih memosisikan diri sebagai pembelajar yang terus mengeksplorasi banyak hal baru.\n\nBahkan, saat artikel ini ditulis pun, aku sebenarnya sedang berada di lokasi KKN (Kuliah Kerja Nyata). Di sini aku memegang amanah sebagai sekretaris, yang membuatku hampir tiap jam harus stay di depan tablet REDMI PAD bututku—yang performanya kadang suka ngelag, stuck, dan patah-patah saat dipakai menyusun dokumen. Ditambah lagi, lokasi KKN-ku ini terkenal susah sinyal. Namun, segala keterbatasan perangkat dan jaringan tersebut sama sekali tidak menyurutkan semangatku untuk tetap konsisten memperbarui skill coding. Bagi saya, memadukan ketelitian dari ilmu hukum dengan logika dinamis dunia IT—bahkan di tengah kondisi darurat sinyal sekalipun—adalah perjalanan yang sangat seru untuk terus dijalani.",
+      "footnotes": []
+    },    
+    {
+      "id": 1,
       "title": "Apa Itu Logical Fallacy?",
       "date": "2026-08-02",
       "category": "Logika",
@@ -88,7 +97,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": 2,
       "title": "Logical Fallacy yang Sering Terjadi Sehari-hari (Part 1)",
       "date": "2026-07-29",
       "category": "Logika",
@@ -101,7 +110,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 3,
       "title": "Logical Fallacy yang Sering Terjadi Sehari-hari (Part 2)",
       "date": "2026-07-30",
       "category": "Logika",
@@ -114,7 +123,7 @@
       ]
     },
     {
-    "id": 3,
+    "id": 4,
     "title": "Logical Fallacy yang Sering Terjadi Sehari-hari (Part 3)",
     "date": "2026-07-31",
     "category": "Logika",
